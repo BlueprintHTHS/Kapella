@@ -3,7 +3,7 @@
 module.exports = {
     db: 'mongodb://localhost/mean-dev',
     app: {
-        name: 'MEAN - A Modern Stack - Development'
+        name: 'Kapella - Development'
     },
     facebook: {
         clientID: 'APP_ID',
@@ -29,5 +29,8 @@ module.exports = {
         clientID: 'API_KEY',
         clientSecret: 'SECRET_KEY',
         callbackURL: 'http://localhost:3000/auth/linkedin/callback'
+    },
+    dogeapi: {
+        apiKey: 'API_KEY'
     }
 };
