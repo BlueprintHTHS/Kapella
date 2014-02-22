@@ -1,0 +1,36 @@
+<div class="song">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="song-title pull-left">
+                {{song.title}}
+                <div class="song-length">{{song.duration}}</div>
+            </div>
+            <div class="contributors pull-right">
+                {{song.recordings.length}} contributors
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="playback-controls pull-left">
+                <div class="button">
+                    <i class="fa fa-play"></i>
+                </div>
+                <div class="button">
+                    <i class="fa fa-pause"></i>
+                </div>
+                <div class="button">
+                    <i class="fa fa-stop"></i>
+                </div>
+                <div class="button">
+                    <i class="fa fa-circle"></i>
+                </div>
+            </div>
+            <div class="song-stats pull-right">
+                <div class="doge-amount">
+                    {{song.dogeBalance || 0}} doge
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
