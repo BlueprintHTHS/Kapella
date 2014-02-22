@@ -60,3 +60,18 @@ exports.user = function(req, res, next, id) {
             next();
         });
 };
+
+/**
+ * Get Settings
+ */
+exports.getSettings = function(req,res) {
+    res.jsonp(req.user.settings);
+}
+
+exports.setSettings = function(req,res) {
+    var address = req.body.address;
+    user.settings.dogeAddress = address;
+    user.save( function(err) {
+        if (err) console.log(err);
+    })
+}

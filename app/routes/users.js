@@ -8,6 +8,8 @@ module.exports = function(app, passport) {
     app.get('/signin', users.signin);
     app.get('/signout', users.signout);
     app.get('/users/me', users.me);
+    app.get('/users/settings/get', users.getSettings);
+    app.post('/users/settings/set', users.setSettings);
 
     // Setting up the userId param
     app.param('userId', users.user);

@@ -17,7 +17,9 @@ var UserSchema = new Schema({
         type: String,
         unique: true
     },
-    dogeAddress: String,
+    settings: {
+        dogeAddress: String
+    },
     dogeBalance: Number,
     hashed_password: String,
     provider: String,
