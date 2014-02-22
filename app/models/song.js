@@ -13,6 +13,8 @@ var Schema = mongoose.Schema;
 var SongSchema = new Schema({
     title: String,
     artist: String,
+    genre: String,
+    duration: Number,
     recordings: [{
         user: ObjectId,
         path: String
