@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose');
+var dogeapi = require ('../libraries/dogeapi.js')
 var Schema = mongoose.Schema;
 
 /**
@@ -24,15 +25,25 @@ SongSchema.methods = {
      * Generate a new dogecoin address for the song
      */
     generateAddress: function(done) {
-        // TODO: use dogeapi to generate new address
-        done(false);
+        dogeapi.getNewAddress(songID, function (error, address) {
+                if(error) {
+                    done(error);
+                }
+            this.dogeAddress = address;
+            })
+        done(false, this.dogeAddress)
     },
 
     /**
      * Update the current dogecoin balance
      */
     updateBalance: function(done) {
-        // TODO: use dogeapi to get new balance and save to model
+        dogeapi.getAddressReceived(null, this.dogeAddress, function (error, amount) {
+            if(error) {
+                done(error)
+            }
+            this.dogeBalance = amount;
+        });
         done(false, this.dogeBalance);
     }
 };
