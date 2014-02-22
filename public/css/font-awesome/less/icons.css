@@ -1,0 +1,5 @@
+NameError: variable @fa-css-prefix is undefined in /Users/andrewmillman/Desktop/Dev Stuff/Kapella/public/css/font-awesome/less/icons.less on line 4, column 2:
+3 
+4 .@{fa-css-prefix}-glass:before { content: @fa-var-glass; }
+5 .@{fa-css-prefix}-music:before { content: @fa-var-music; }
+

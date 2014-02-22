@@ -1,0 +1,5 @@
+NameError: variable @fa-css-prefix is undefined in /Users/andrewmillman/Desktop/Dev Stuff/Kapella/public/css/font-awesome/less/fixed-width.less on line 3, column 2:
+2 // -------------------------
+3 .@{fa-css-prefix}-fw {
+4   width: (18em / 14);
+
