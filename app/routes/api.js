@@ -2,6 +2,9 @@ var mongoose = require('mongoose');
 var Song = mongoose.model('Song');
 var path = require('path');
 var appDir = path.dirname(require.main.filename);
+var uploadDir = path.join(appDir, 'uploads');
+var uuid = require('node-uuid');
+var fs = require('fs');
 
 function sendError(res, err) {
     res.statusCode = 503;
@@ -79,7 +82,29 @@ module.exports = function(app) {
      */
     app.post('/api/songs/:songId/recordings', function(req, res) {
         var songId = req.params.songId;
-
+        var recordingData = req.body.data;
+        var filename = uuid.v1() + '.wav';
+        fs.writeFile(path.join(uploadDir, filename), recordingData, function(err) {
+            if (!err) {
+                var recording = {
+                    filename: filename
+                };
+                Song.findByIdAndUpdate(
+                    songId,
+                    {$push: {recordings: recording}},
+                    {safe: true, upsert: true},
+                    function(err, song) {
+                        if (!err) {
+                            res.send(song.recordings[song.recordings.length-1]); // TODO: find better way of returning inserted object
+                        } else {
+                            sendError(res, err);
+                        }
+                    }
+                )
+            } else {
+                sendError(res, err);
+            }
+        })
     });
 
     /**
