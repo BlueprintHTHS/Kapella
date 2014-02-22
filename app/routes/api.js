@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var Song = mongoose.model('Song');
+var path = require('path');
+var appDir = path.dirname(require.main.filename);
 
 function sendError(res, err) {
     res.statusCode = 503;
@@ -73,20 +75,28 @@ module.exports = function(app) {
     });
 
     /**
+     * Submit a new recording
+     */
+    app.post('/api/songs/:songId/recordings', function(req, res) {
+        var songId = req.params.songId;
+
+    });
+
+    /**
      * Vote for a song - begin transaction session
      */
-    app.post('/votes', function(req, res) {
+    app.post('/api/votes', function(req, res) {
         var songId = req.body.songId;
     });
 
-    app.put('/votes/:voteId', function(req, res) {
+    app.put('/api/votes/:voteId', function(req, res) {
 
     });
 
     /**
      * Get user data
      */
-    app.get('/users/:id', function(req, res) {
+    app.get('/api/users/:id', function(req, res) {
 
     });
 };
