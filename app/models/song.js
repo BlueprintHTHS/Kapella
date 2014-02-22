@@ -12,6 +12,10 @@ var Schema = mongoose.Schema;
 var SongSchema = new Schema({
     title: String,
     artist: String,
+    recordings: [{
+        user: ObjectId,
+        path: String
+    }],
     dogeAddress: String,
     dogeBalance: Number
 });
