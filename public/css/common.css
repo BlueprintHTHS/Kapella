@@ -141,3 +141,56 @@ body {
   height: 30px;
   margin: 5px;
 }
+kapella-recorder {
+  /*.dot {
+    stroke: #000;
+  }*/
+  /*#chart .tick:not(:first) line {
+      stroke: transparent;
+  }*/
+}
+kapella-recorder .axis path,
+kapella-recorder .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+kapella-recorder .note-label {
+  fill: #dddddd;
+  top: -2px;
+  postion: relative;
+}
+kapella-recorder .axis,
+kapella-recorder .label {
+  fill: #666666;
+}
+kapella-recorder .axis path,
+kapella-recorder .axis line {
+  stroke: #666666;
+}
+kapella-recorder .rect {
+  fill: #24dd24;
+}
+kapella-recorder #notes,
+kapella-recorder #chart {
+  position: absolute;
+  left: 0px;
+}
+kapella-recorder path.domain {
+  stroke: transparent;
+}
+kapella-recorder #start {
+  position: absolute;
+  top: 250px;
+}
+kapella-recorder #notes-container {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  height: 200px;
+  left: 200px;
+}
+kapella-recorder #chart .tick line {
+  fill: white;
+  stroke: white;
+}
