@@ -21,9 +21,8 @@ var UserSchema = new Schema({
         dogeAddress: String
     },
     dogeBalance: Number,
-    hashed_password: String,
+    songs: [],
     provider: String,
-    salt: String,
     facebook: {},
     twitter: {},
     github: {},

@@ -8,7 +8,7 @@ var dogeapi = require ('../libraries/dogeapi.js')
 var Schema = mongoose.Schema;
 
 /**
- * User Schema
+ * Song Schema
  */
 var SongSchema = new Schema({
     title: String,
