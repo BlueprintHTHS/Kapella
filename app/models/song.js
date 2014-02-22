@@ -33,7 +33,7 @@ SongSchema.methods = {
      */
     updateBalance: function(done) {
         // TODO: use dogeapi to get new balance and save to model
-        done(this.dogeBalance);
+        done(false, this.dogeBalance);
     }
 };
 
