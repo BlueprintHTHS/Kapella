@@ -183,7 +183,7 @@ kapella-recorder #start {
   position: absolute;
   top: 250px;
 }
-kapella-recorder #notes-container {
+kapella-recorder .notes-container {
   position: fixed;
   bottom: 0px;
   width: 100%;
