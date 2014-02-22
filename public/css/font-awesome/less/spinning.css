@@ -1,0 +1,5 @@
+NameError: variable @fa-css-prefix is undefined in /Users/andrewmillman/Desktop/Dev Stuff/Kapella/public/css/font-awesome/less/spinning.less on line 4, column 2:
+3 
+4 .@{fa-css-prefix}-spin {
+5   -webkit-animation: spin 2s infinite linear;
+

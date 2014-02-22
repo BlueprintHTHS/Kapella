@@ -1,0 +1,5 @@
+NameError: variable @fa-css-prefix is undefined in /Users/andrewmillman/Desktop/Dev Stuff/Kapella/public/css/font-awesome/less/larger.less on line 5, column 2:
+4 /* makes the font 33% larger relative to the icon container */
+5 .@{fa-css-prefix}-lg {
+6   font-size: (4em / 3);
+

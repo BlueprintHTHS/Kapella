@@ -1,0 +1,5 @@
+NameError: variable @fa-css-prefix is undefined in /Users/andrewmillman/Desktop/Dev Stuff/Kapella/public/css/font-awesome/less/core.less on line 4, column 2:
+3 
+4 .@{fa-css-prefix} {
+5   display: inline-block;
+

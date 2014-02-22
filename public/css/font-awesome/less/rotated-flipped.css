@@ -1,0 +1,5 @@
+NameError: variable @fa-css-prefix is undefined in /Users/andrewmillman/Desktop/Dev Stuff/Kapella/public/css/font-awesome/less/rotated-flipped.less on line 4, column 2:
+3 
+4 .@{fa-css-prefix}-rotate-90  { .fa-icon-rotate(90deg, 1);  }
+5 .@{fa-css-prefix}-rotate-180 { .fa-icon-rotate(180deg, 2); }
+

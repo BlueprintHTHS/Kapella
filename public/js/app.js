@@ -34,7 +34,7 @@ kapella.config(['$stateProvider', '$urlRouterProvider',
             })
             .state('recording song', {
                 url: '/record/:songId',
-                templateUrl: 'views/recording.html',
+                templateUrl: 'views/recordview.html',
                 controller: 'RecordCtrl'
             });
     }

@@ -1,0 +1,36 @@
+<div class="song">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="song-title pull-left">
+                {{song.title}}
+                <div class="song-length">{{song.duration}}</div>
+            </div>
+            <div class="contributors pull-right">
+                {{song.recordings.length}} contributors
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="playback-controls pull-left">
+                <a class="button" href="#" ng-click="play()">
+                    <i class="fa fa-play"></i>
+                </a>
+                <a class="button" href="#" ng-click="pause()">
+                    <i class="fa fa-pause"></i>
+                </a>
+                <a class="button" href="#" ng-click="stop()">
+                    <i class="fa fa-stop"></i>
+                </a>
+                <a class="button" href="#!/record/{{song._id}}">
+                    <i class="fa fa-circle"></i>
+                </a>
+            </div>
+            <div class="song-stats pull-right">
+                <div class="doge-amount">
+                    {{song.dogeBalance || 0}} doge
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -2,10 +2,8 @@
 @second-color: #e74c3c;
 
 @main-text-color: white;
-@secondary-text-color: #cccccc;
 @second-text-color: #555555;
 
-@facebook-color: #354c8c;
 
 @round-border: 5px;
 
@@ -121,34 +119,97 @@ body {
   }
 }
 
-
-/*---------------menu------------*/
-.top-btn {
-  font-size: 30px;
-  color: @secondary-text-color;
-}
-.top-btn:hover {
-  color: @main-text-color;
-}
-#doge-settings {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-}
-#facebook-login {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-}
-#settingsModal {
-  .modal-content {
-    background-color: #222222;
-    color: @secondary-text-color;
-    .btn-primary {
-      background-color: @main-color;
-      border-color: #28ae61;
-    }
+/*-------------browse------------*/
+.song {
+  background-color: #222222;
+  color: #bbbbbb;
+  padding: 20px;
+  font-size: 20px;
+  margin-bottom: 20px;
+  .song-title {
+    font-size: 30px;
+    font-weight: bold;
   }
+  .song-length {
+    font-style: italic;
+    font-weight: normal;
+    font-size: 20px;
+    display: inline-block;
+  }
+  .song-length:before {
+    content: " — ";
+    top: -2px;
+    position: relative;
+  }
+  .button {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    margin: 5px;
+    text-align: center;
+  }
+  .contributors {
+    display: inline-block;
+    height: 30px;
+    margin: 5px;
+  }
+  .doge-amount {
+    display: inline-block;
+    height: 30px;
+    margin: 5px;
+  }
+}
+
+kapella-recorder {
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+
+  /*.dot {
+    stroke: #000;
+  }*/
+  .note-label {
+    fill: #dddddd;
+    top:-2px;
+    postion:relative;
+  }
+  .axis, .label {
+    fill: #666666;
+  }
+  .axis path, .axis line {
+    stroke: #666666;
+  }
+  .rect {
+    fill: rgb(36, 221, 36);
+  }
+  #notes, #chart {
+    position: absolute;
+    left: 0px;
+  }
+  path.domain {
+    stroke: transparent;
+  }
+  #start {
+    position:absolute;
+    top: 250px;
+  }
+  .notes-container {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    height: 200px;
+    left: 200px;
+  }
+  #chart .tick line {
+    fill: white;
+    stroke: white;
+  }
+  /*#chart .tick:not(:first) line {
+      stroke: transparent;
+  }*/
 }
 textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus {
   border-color: rgba(126, 239, 104, 0.8);
