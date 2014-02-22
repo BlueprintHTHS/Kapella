@@ -13,11 +13,10 @@ kapellaDirectives.directive('kapellaRecorder', function() {
         link: function(scope, element, attrs) {
             var maxtime = 3024;
             var measure = 192;
-            var measures=[]
+            var measures=[];
             for (var i=0 ; measure*i<=maxtime+measure; i++) {
                 measures.push(i*measure);
             }
-            console.log(measures);
             var conversion =180;
             maxtime = maxtime/conversion;
             var maxtimeceil = Math.ceil(maxtime);
@@ -136,6 +135,8 @@ kapellaDirectives.directive('kapellaRecorder', function() {
             element.find('audio')[0].load();
 
             scope.start = function() {
+                $(element).find('#notes').stop(true, false);
+                $(element).find('#notes').css('left',0);
                 $(element).find('#notes').animate({
                     left: -1*widthceil
                 }, maxtimeceil*1000, 'linear', function() {
