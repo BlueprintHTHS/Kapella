@@ -1,0 +1,5 @@
+NameError: variable @fa-font-path is undefined in /Users/andrewmillman/Desktop/Dev Stuff/Kapella/public/css/font-awesome/less/path.less on line 6, column 12:
+5   font-family: 'FontAwesome';
+6   src: url('@{fa-font-path}/fontawesome-webfont.eot?v=@{fa-version}');
+7   src: url('@{fa-font-path}/fontawesome-webfont.eot?#iefix&v=@{fa-version}') format('embedded-opentype'),
+
