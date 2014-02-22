@@ -146,3 +146,30 @@ kapellaDirectives.directive('kapellaRecorder', function() {
         }
     }
 });
+
+kapellaDirectives.directive('kapellaPlayer', function() {
+    return {
+        restrict: 'E',
+        templateUrl: 'views/playerDirectiveTemplate.html',
+        scope: {
+            song: '='
+        },
+        link: function(scope, element, attrs) {
+            scope.play = function() {
+
+            }
+
+            scope.pause = function() {
+
+            }
+
+            scope.stop = function() {
+
+            }
+
+            scope.record = function() {
+
+            }
+        }
+    }
+});
