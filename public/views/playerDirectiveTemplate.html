@@ -13,18 +13,18 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="playback-controls pull-left">
-                <div class="button">
+                <a class="button" href="#" ng-click="play()">
                     <i class="fa fa-play"></i>
-                </div>
-                <div class="button">
+                </a>
+                <a class="button" href="#" ng-click="pause()">
                     <i class="fa fa-pause"></i>
-                </div>
-                <div class="button">
+                </a>
+                <a class="button" href="#" ng-click="stop()">
                     <i class="fa fa-stop"></i>
-                </div>
-                <div class="button">
+                </a>
+                <a class="button" href="#!/record/{{song._id}}">
                     <i class="fa fa-circle"></i>
-                </div>
+                </a>
             </div>
             <div class="song-stats pull-right">
                 <div class="doge-amount">

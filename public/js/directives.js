@@ -154,7 +154,21 @@ kapellaDirectives.directive('kapellaPlayer', function() {
             song: '='
         },
         link: function(scope, element, attrs) {
+            scope.play = function() {
 
+            }
+
+            scope.pause = function() {
+
+            }
+
+            scope.stop = function() {
+
+            }
+
+            scope.record = function() {
+
+            }
         }
     }
 });
