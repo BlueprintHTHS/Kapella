@@ -1,0 +1,266 @@
+<html>
+<head>
+
+	<style>
+		body {
+		  /*font: 10px sans-serif;*/
+		  background-color: #222222;
+		}
+
+		.axis path,
+		.axis line {
+		  fill: none;
+		  stroke: #000;
+		  shape-rendering: crispEdges;
+		}
+
+		/*.dot {
+		  stroke: #000;
+		}*/
+		.note-label {
+			fill: #dddddd;
+			top:-2px;
+			postion:relative;
+		}
+		.axis, .label {
+			fill: #666666;
+		}
+		.axis path, .axis line {
+			stroke: #666666;
+		}
+		.rect {
+			fill: rgb(36, 221, 36);
+		}
+		#notes, #chart {
+			position: absolute;
+			left: 0px;
+		}
+		path.domain {
+			stroke: transparent;
+		}
+		#start {
+			position:absolute;
+			top: 250px;
+		}
+		#notes-container {
+			position: fixed;
+			bottom: 0px;
+			width: 100%;
+			height: 200px;
+			left: 200px;
+		}
+		#chart .tick line {
+			fill: white;
+			stroke: white;
+		}
+		/*#chart .tick:not(:first) line {
+			stroke: transparent;
+		}*/
+	</style>
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script>
+	function note(num) {
+		notes=['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+		return(notes[num%12]);
+	}
+	</script>
+</head>
+<body>
+	<div id="notes-container">
+	</div>
+	<audio controls>
+	  <source src="mj-bass.wav" type="audio/wav">
+	</audio>
+	<script>
+		var maxtime = 3024;
+		var measure = 192;
+		var measures=[]
+		for (var i=0 ; measure*i<=maxtime+measure; i++) {
+			measures.push(i*measure);
+		}
+		console.log(measures);
+		var conversion =180;
+		maxtime = maxtime/conversion;
+		maxtimeceil = Math.ceil(maxtime);
+		var secondLength = 100;
+		var widthceil = maxtimeceil*secondLength;
+		var width=maxtime*secondLength;
+		var height=100;
+		var margin = {top: 20, right: 0, bottom: 60, left: 0};
+
+		var x = d3.scale.linear()
+		    .range([0, widthceil]);
+
+		var y = d3.scale.linear()
+		    .range([height, 0]);
+
+		var color = d3.scale.category10();
+
+		var xAxis = d3.svg.axis()
+		    .scale(x)
+		    .orient("bottom");
+
+		var yAxis = d3.svg.axis()
+		    .scale(y)
+		    .orient("left");
+
+		/*var svg = d3.select("#notes-container").append("svg")
+		    .attr("width", width + margin.left + margin.right)
+		    .attr("height", height + margin.top + margin.bottom)
+		    .attr('id', 'chart')
+		  .append("g")
+		    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+		d3.tsv("output.tsv", function(error, data) {
+		  data.forEach(function(d) {
+		    d.midi = +d.midi;
+		    d.t = +d.t;
+		    d.dur = +d.dur;
+		    d.vocal = d.vocal;
+		  });
+
+		  x.domain(d3.extent(data, function(d) { return d.t; })).nice();
+		  y.domain(d3.extent(data, function(d) { return d.midi; })).nice();
+
+		  svg.append("g")
+		      .attr("class", "x axis")
+		      .attr("transform", "translate(0," + parseInt(height+40) + ")")
+		      .call(xAxis
+		      	.ticks(maxtime)
+		      	.tickSize(-(height+60), 0, 0)
+		      	.tickFormat("")
+		      )
+		    .append("text")
+		      .attr("class", "label")
+		      .attr("x", width)
+		      .attr("y", -6)
+		      .style("text-anchor", "end");
+
+		  svg.append("g")
+		      .attr("class", "y axis")
+		      .call(
+		      	yAxis
+		      	.tickFormat("")
+		      	.tickSize(0,0,0)
+		      )
+		    .append("text")
+		      .attr("class", "label")
+		      .attr("transform", "rotate(-90)")
+		      .attr("y", 6)
+		      .attr("dy", ".71em")
+		      .style("text-anchor", "end");
+		      //.text("Sepal Length (cm)");*/
+
+		  /*svg.selectAll(".dot")
+		      .data(data)
+		    .enter().append("rect")
+		      .attr("class", "rect")
+		      .attr("height", 3.5)
+		      .attr("width", function(d) { return x(d.dur); })
+		      .attr("x", function(d) { return x(d.t); })
+		      .attr("y", function(d) { return y(d.midi); });
+
+		  svg.selectAll("text")
+			  .data(data)
+		  	.enter().append("text")
+			  .text(function(d) { return d.vocal; })
+			  .attr("x", function(d) { return x(d.t); })
+			  .attr("y", function(d) { return y(d.midi); })
+			  .attr('class','note-label');*/
+		//});
+		
+		var notes = d3.select("#notes-container").append("svg")
+		    .attr("width", widthceil + margin.left + margin.right)
+		    .attr("height", height + margin.top + margin.bottom)
+		    /*.attr('viewbox', "0 0 "+width+" "+height)
+		    .attr('preserveAspectRatio', "xMidYMid")*/
+		    .attr('id', 'notes')
+		  .append("g")
+		    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+		d3.tsv("output.tsv", function(error, data) {
+		  data.forEach(function(d) {
+		    d.midi = +d.midi;
+		    d.t = +d.t;
+		    d.dur = +d.dur;
+		    d.vocal = d.vocal;
+		  });
+
+		  x.domain(d3.extent(data, function(d) { return d.t; })).nice();
+		  y.domain(d3.extent(data, function(d) { return d.midi; })).nice();
+
+		  notes.append("g")
+		      .attr("class", "x axis")
+		      .attr("transform", "translate(0," + parseInt(height+40) + ")")
+		      .call(xAxis
+		      	//.ticks(maxtimeceil)
+		      	.tickValues(measures)
+		      	.tickSize(-(height+60), 0, 0)
+		      	.tickFormat("")
+		      )
+		    .append("text")
+		      .attr("class", "label")
+		      .attr("x", widthceil)
+		      .attr("y", -6)
+		      .style("text-anchor", "end");
+
+		  notes.selectAll(".dot")
+		      .data(data)
+		    .enter().append("rect")
+		      .attr("class", "rect")
+		      .attr("height", 3.5)
+		      .attr("width", function(d) { return x(d.dur); })
+		      .attr("x", function(d) { return x(d.t); })
+		      .attr("y", function(d) { return y(d.midi); });
+
+		  notes.selectAll("text")
+			  .data(data)
+		  	.enter().append("text")
+			  .text(function(d) { return d.vocal; })
+			  .attr("x", function(d) { return x(d.t); })
+			  .attr("y", function(d) { return y(d.midi); })
+			  .attr('class','note-label');
+		});
+
+		var svg = d3.select("#notes-container").append("svg")
+		    .attr("width", widthceil + margin.left + margin.right)
+		    .attr("height", height + margin.top + margin.bottom)
+		    .attr('id', 'chart')
+		  .append("g")
+		    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+		d3.tsv("output.tsv", function(error, data) {
+		  data.forEach(function(d) {
+		    d.midi = +d.midi;
+		    d.t = +d.t;
+		    d.dur = +d.dur;
+		    d.vocal = d.vocal;
+		  });
+
+		  	x.domain(d3.extent(data, function(d) { return d.t; })).nice();
+		  	y.domain(d3.extent(data, function(d) { return d.midi; })).nice();
+
+		  	svg.append("g")
+		      .attr("class", "x axis")
+		      .attr("transform", "translate(0," + parseInt(height+40) + ")")
+		      .call(xAxis
+		      	.ticks(1)
+		      	.tickSize(-(height+60), 0, 0)
+		      	.tickFormat("")
+		      )
+		    .append("text")
+		      .attr("class", "label")
+		      .attr("x", widthceil)
+		      .attr("y", -6)
+		      .style("text-anchor", "end");
+
+		});
+		$('audio').click(function(){
+			$('#notes').animate({
+				left: -1*widthceil
+			}, maxtimeceil*1000, 'linear');
+		});
+	</script>
+</body>	
+</html>
