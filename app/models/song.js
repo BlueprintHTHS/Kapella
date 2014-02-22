@@ -19,13 +19,13 @@ var SongSchema = new Schema({
 /**
  * Methods
  */
-UserSchema.methods = {
+SongSchema.methods = {
     /**
      * Generate a new dogecoin address for the song
      */
     generateAddress: function(done) {
         // TODO: use dogeapi to generate new address
-        done();
+        done(false);
     },
 
     /**
