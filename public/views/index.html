@@ -1,6 +1,6 @@
 <section data-ng-controller="IndexController">
-    <a href="" data-toggle="modal" data-target="#settingsModal"><i class="fa fa-cog"></i></a>
-    <a href="/auth/facebook"><i class="fa fa-facebook-square pull-right" id="facebook-login"></i></a>
+    <a class="top-btn" href="" data-toggle="modal" data-target="#settingsModal"><i id="doge-settings" class="fa fa-cog"></i></a>
+    <a class="top-btn" href="/auth/facebook"><i class="fa fa-facebook-square pull-right" id="facebook-login"></i></a>
     <div id="beats-wrapper">
         <div class="beat"></div>
         <div class="beat"></div>
@@ -17,7 +17,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Modal title</h4>
+                    <h4 class="modal-title">Dogecoin Settings</h4>
                 </div>
                 <div class="modal-body">
                     <form role="form">
@@ -26,20 +26,10 @@
                             <input type="text" class="form-control" id="dogecoinAddress" placeholder="address">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            <label>Balance: </label>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputFile">File input</label>
-                            <input type="file" id="exampleInputFile">
-                            <p class="help-block">Example block-level help text here.</p>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> Check me out
-                            </label>
-                        </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
+                        <button class="btn btn-default">Payout</button>
+                        <button type="submit" style="display: none;" class="btn btn-default">Submit</button>
                     </form>
                 </div>
                 <div class="modal-footer">
