@@ -20,7 +20,8 @@ var SongSchema = new Schema({
         filename: String
     }],
     dogeAddress: String,
-    dogeBalance: Number
+    dogeBalance: Number,
+    dogeTotal: Number
 });
 
 /**
@@ -31,11 +32,12 @@ SongSchema.methods = {
      * Generate a new dogecoin address for the song
      */
     generateAddress: function(done) {
-        dogeapi.getNewAddress(songID, function (error, address) {
+        var _this = this;
+        dogeapi.getNewAddress(this._id, function (error, address) {
                 if(error) {
                     done(error);
                 }
-            this.dogeAddress = address;
+            _this.dogeAddress = address;
             })
         done(false, this.dogeAddress)
     },
@@ -44,11 +46,12 @@ SongSchema.methods = {
      * Update the current dogecoin balance
      */
     updateBalance: function(done) {
+        var _this = this;
         dogeapi.getAddressReceived(null, this.dogeAddress, function (error, amount) {
             if(error) {
                 done(error)
             }
-            this.dogeBalance = amount;
+            _this.dogeBalance = amount;
         });
         done(false, this.dogeBalance);
     }
