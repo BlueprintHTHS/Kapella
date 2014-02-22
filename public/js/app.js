@@ -1,4 +1,4 @@
-var kapella = angular.module('kapella', ['kapellaControllers', 'ngCookies', 'ngResource', 'ui.bootstrap', 'ui.router', 'mean.system', 'mean.articles']);
+var kapella = angular.module('kapella', ['kapellaControllers', 'kapellaDirectives', 'ngCookies', 'ngResource', 'ui.bootstrap', 'ui.router', 'mean.system', 'mean.articles']);
 
 kapella.config(['$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
@@ -27,10 +27,15 @@ kapella.config(['$stateProvider', '$urlRouterProvider',
                 url: '/',
                 templateUrl: 'views/index.html'
             })
-            .state('browse', {
+            .state('browse songs', {
                 url: '/browse',
                 templateUrl: 'views/browse.html',
                 controller: 'BrowseCtrl'
+            })
+            .state('recording song', {
+                url: '/record/:songId',
+                templateUrl: 'views/recording.html',
+                controller: 'RecordCtrl'
             });
     }
 ]);
