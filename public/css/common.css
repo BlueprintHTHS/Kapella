@@ -101,3 +101,43 @@ body {
 .beat.on {
   background-color: #e74c3c;
 }
+/*-------------browse------------*/
+.song {
+  background-color: #222222;
+  color: #bbbbbb;
+  padding: 20px;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.song .song-title {
+  font-size: 30px;
+  font-weight: bold;
+}
+.song .song-length {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 20px;
+  display: inline-block;
+}
+.song .song-length:before {
+  content: " — ";
+  top: -2px;
+  position: relative;
+}
+.song .button {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  margin: 5px;
+  text-align: center;
+}
+.song .contributors {
+  display: inline-block;
+  height: 30px;
+  margin: 5px;
+}
+.song .doge-amount {
+  display: inline-block;
+  height: 30px;
+  margin: 5px;
+}
