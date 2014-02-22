@@ -17,7 +17,7 @@ var SongSchema = new Schema({
     duration: Number,
     recordings: [{
         user: mongoose.Schema.ObjectId,
-        path: String
+        filename: String
     }],
     dogeAddress: String,
     dogeBalance: Number
