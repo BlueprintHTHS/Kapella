@@ -27,7 +27,12 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
       .state('home', {
         url: '/',
         templateUrl: 'views/index.html'
-    });
+    })
+        .state('browse', {
+            url: '/browse',
+            templateUrl: 'views/browse.html',
+            controller: 'BrowseCtrl'
+        });
 }
 ]);
 
