@@ -1,6 +1,10 @@
 var mongoose = require('mongoose');
 var Song = mongoose.model('Song');
 
+function sendError(res, err) {
+    res.statusCode = 503;
+    res.send({err: err});
+}
 module.exports = function(app) {
     /**
      * Get array of all songs on server
@@ -20,8 +24,27 @@ module.exports = function(app) {
             if (!err) {
                 res.send(song);
             } else {
-                res.statusCode = 503;
-                res.send({err: err});
+                sendError(res, err);
+            }
+        });
+    });
+
+    /**
+     * Refresh the dogecoin balance and return new song data
+     */
+    app.get('/api/songs/:songId/balance', function(req, res) {
+        var id = req.params.songId;
+        Song.findById(id, function(err, song) {
+            if (err) {
+                sendError(res, err);
+            } else {
+                song.updateBalance(function(err) {
+                    if (err) {
+                        sendError(res, err);
+                    } else {
+                        res.send(song);
+                    }
+                })
             }
         });
     });
@@ -40,13 +63,11 @@ module.exports = function(app) {
                     if (!err) {
                         res.send(song);
                     } else {
-                        res.statusCode = 503;
-                        res.send({err: err});
+                        sendError(res, err);
                     }
                 });
             } else {
-                res.statusCode = 503;
-                res.send({err: err});
+                sendError(res, err);
             }
         });
     });
