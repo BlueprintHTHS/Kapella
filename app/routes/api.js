@@ -75,6 +75,14 @@ module.exports = function(app) {
     });
 
     /**
+     * Submit a new recording
+     */
+    app.post('/api/songs/:songId/recordings', function(req, res) {
+        var songId = req.params.songId;
+
+    });
+
+    /**
      * Vote for a song - begin transaction session
      */
     app.post('/api/votes', function(req, res) {
