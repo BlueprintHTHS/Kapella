@@ -18,18 +18,8 @@ exports.authCallback = function(req, res) {
  */
 exports.signin = function(req, res) {
     res.render('users/signin', {
-        title: 'Signin',
+            title: 'Signin',
         message: req.flash('error')
-    });
-};
-
-/**
- * Show sign up form
- */
-exports.signup = function(req, res) {
-    res.render('users/signup', {
-        title: 'Sign up',
-        user: new User()
     });
 };
 
@@ -46,37 +36,6 @@ exports.signout = function(req, res) {
  */
 exports.session = function(req, res) {
     res.redirect('/');
-};
-
-/**
- * Create user
- */
-exports.create = function(req, res, next) {
-    var user = new User(req.body);
-    var message = null;
-
-    user.provider = 'local';
-    user.save(function(err) {
-        if (err) {
-            switch (err.code) {
-                case 11000:
-                case 11001:
-                    message = 'Username already exists';
-                    break;
-                default:
-                    message = 'Please fill all the required fields';
-            }
-
-            return res.render('users/signup', {
-                message: message,
-                user: user
-            });
-        }
-        req.logIn(user, function(err) {
-            if (err) return next(err);
-            return res.redirect('/');
-        });
-    });
 };
 
 /**
@@ -101,3 +60,18 @@ exports.user = function(req, res, next, id) {
             next();
         });
 };
+
+/**
+ * Get Settings
+ */
+exports.getSettings = function(req,res) {
+    res.jsonp(req.user.settings);
+}
+
+exports.setSettings = function(req,res) {
+    var address = req.body.address;
+    user.settings.dogeAddress = address;
+    user.save( function(err) {
+        if (err) console.log(err);
+    })
+}
