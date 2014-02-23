@@ -63,7 +63,6 @@ module.exports = function(app) {
             artist: req.body.artist
         });
         console.log(req.body.title);
-
         song.save(function(err) {
             if (!err) {
                 song.generateAddress(function(err) {
