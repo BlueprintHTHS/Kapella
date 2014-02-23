@@ -176,10 +176,21 @@ kapellaDirectives.directive('kapellaPlayer', function() {
                     files.push({id: scope.song.recordings[i]._id, src: scope.song.recordings[i].filename});
                 }
                 console.log(files);
-                createjs.Sound.registerManifest(files, '/uploads/');
+                var result = createjs.Sound.registerManifest(files, '/uploads/');
+                for (var j=0; j<result.length; j++) {
+                    if (result[i] == true) {
+                        numLoaded++;
+                    }
+                }
+                if (numLoaded == scope.song.recordings.length) {
+                    loaded = true;
+                    createjs.Sound.removeAllEventListeners(); // TODO: find better way of detaching sound load listener
+                    done();
+                }
             };
 
             scope.play = function() {
+                scope.stop();
                 load(function() {
                     var recording;
                     for (var i=0; i<scope.song.recordings.length; i++) {
