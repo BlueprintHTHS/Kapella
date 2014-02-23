@@ -188,6 +188,17 @@ path.domain {
   top: 330px;
 }
 /*-------------browse------------*/
+#search-box {
+  color: #cccccc;
+  font-size: 20px;
+}
+#search-box input {
+  background-color: #222222;
+  color: #cccccc;
+  padding: 10px;
+  border: none;
+  margin-left: 10px;
+}
 .song {
   background-color: #222222;
   color: #bbbbbb;
@@ -231,11 +242,9 @@ kapella-recorder {
   /*.dot {
     stroke: #000;
   }*/
-
   /*#chart .tick:not(:first) line {
       stroke: transparent;
   }*/
-
 }
 kapella-recorder .axis path,
 kapella-recorder .axis line {
