@@ -11,6 +11,8 @@
         "bootstrap": "3.0.3",
         "angular-bootstrap": "0.10.0",
         "recorderjs": "mattdiamond/Recorderjs",
-        "soundjs": "CreateJS/SoundJS"
+        "SoundJS": "latest",
+        "soundmanager2": "latest",
+        "d3": "latest"
     }
 }
