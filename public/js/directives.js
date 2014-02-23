@@ -1,8 +1,8 @@
 'use strict';
 
-var kapellaDirectives = angular.module('kapellaDirectives', ['kapellaServices']);
+var kapellaDirectives = angular.module('kapellaDirectives', ['kapellaServices', 'ngRoute']);
 
-kapellaDirectives.directive('kapellaRecorder', ['Recordings', function(Recordings) {
+kapellaDirectives.directive('kapellaRecorder', ['Recordings', '$routeParams', function(Recordings, $routeParams) {
     return {
         restrict: 'E',
         templateUrl: 'views/recorderDirectiveTemplate.html',
@@ -12,6 +12,8 @@ kapellaDirectives.directive('kapellaRecorder', ['Recordings', function(Recording
             songId: '@'
         },
         link: function(scope, element, attrs) {
+            console.log($routeParams);
+
             scope.isPlaying = false;
             createjs.Sound.addEventListener('fileload', function() {
                 scope.loaded();
@@ -42,19 +44,19 @@ kapellaDirectives.directive('kapellaRecorder', ['Recordings', function(Recording
 
             function startUserMedia(stream) {
                 var input = audio_context.createMediaStreamSource(stream);
-                __log('Media stream created.');
+//                __log('Media stream created.');
 
                 input.connect(audio_context.destination);
-                __log('Input connected to audio context destination.');
+//                __log('Input connected to audio context destination.');
 
                 recorder = new Recorder(input);
-                __log('Recorder initialised.');
+//                __log('Recorder initialised.');
             }
 
             function createDownloadLink() {
                 recorder && recorder.exportWAV(function(blob) {
                     console.log('Saving WAV file', blob);
-                    Recordings.save({songId: scope.songId, data: blob});
+                    Recordings.save({songId: $routeParams.songId, data: blob});
                 });
             }
 
@@ -69,7 +71,7 @@ kapellaDirectives.directive('kapellaRecorder', ['Recordings', function(Recording
                     __log('Audio context set up.');
                     __log('navigator.getUserMedia ' + (navigator.getUserMedia ? 'available.' : 'not present!'));
                 } catch (e) {
-                    alert('No web audio support in this browser!');
+                    console.log('No web audio support in this browser!');
                 }
 
                 navigator.getUserMedia({audio: true}, startUserMedia, function(e) {
@@ -215,7 +217,7 @@ kapellaDirectives.directive('kapellaRecorder', ['Recordings', function(Recording
             });
 
             // TODO: delay until after variable interpolation
-            element.find('audio')[0].load();
+//            element.find('audio')[0].load();
 
             scope.start = function() {
                 $(element).find('#notes').stop(true, false);

@@ -230,11 +230,9 @@ kapella-recorder {
   /*.dot {
     stroke: #000;
   }*/
-
   /*#chart .tick:not(:first) line {
       stroke: transparent;
   }*/
-
 }
 kapella-recorder .axis path,
 kapella-recorder .axis line {
