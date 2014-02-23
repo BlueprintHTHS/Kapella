@@ -100,16 +100,16 @@ body {
 .beat.on {
   background-color: #e74c3c;
 }
-.notes-container {
+#notes-wrapper .notes-container {
   position: relative;
   width: 100%;
   height: 180px;
   left: 200px;
 }
-.notes-container #notes {
+#notes-wrapper .notes-container #notes {
   position: absolute;
 }
-.notes-container #chart {
+#notes-wrapper .notes-container #chart {
   position: absolute;
 }
 .note-label {
@@ -151,7 +151,7 @@ path.domain {
 }
 #notes-wrapper {
   width: 100%;
-  position: fixed;
+  position: absolute;
   left: 0px;
   background-color: #222222;
   padding-bottom: 5px;
@@ -160,7 +160,7 @@ path.domain {
 }
 #record-controls {
   position: relative;
-  top: 250px;
+  top: 220px;
 }
 /*-------------browse------------*/
 .song {
@@ -232,7 +232,7 @@ kapella-recorder .axis line {
   stroke: #666666;
 }
 kapella-recorder .rect {
-  fill: #24dd24;
+  fill: #2ecc71;
 }
 kapella-recorder #notes,
 kapella-recorder #chart {

@@ -83,10 +83,12 @@ kapellaDirectives.directive('kapellaRecorder', function() {
                     .data(data)
                     .enter().append("rect")
                     .attr("class", "rect")
-                    .attr("height", 3.5)
+                    .attr("height", 5)
                     .attr("width", function(d) { return x(d.dur); })
                     .attr("x", function(d) { return x(d.t); })
-                    .attr("y", function(d) { return y(d.midi); });
+                    .attr("y", function(d) { return y(d.midi); })
+                    .attr('rx', '2.5')
+                    .attr('ry', '2.5');
 
                 notes.selectAll("text")
                     .data(data)
@@ -155,21 +157,59 @@ kapellaDirectives.directive('kapellaPlayer', function() {
             song: '='
         },
         link: function(scope, element, attrs) {
-            scope.play = function() {
+            var loaded = false;
+            var load = function(done) {
+                if (loaded) {
+                    done();
+                    return;
+                }
+                var numLoaded = 0;
+                createjs.Sound.addEventListener("fileload", function() {
+                    numLoaded++;
+                    if (numLoaded == scope.song.recordings.length) {
+                        loaded = true;
+                        createjs.Sound.removeAllEventListeners(); // TODO: find better way of detaching sound load listener
+                        done();
+                    }
+                });
+                var files = [];
+                var recording;
+                for (var i=0; i<scope.song.recordings.length; i++) {
+                    files.push({id: scope.song.recordings[i]._id, src: scope.song.recordings[i].filename});
+                }
+                console.log(files);
+                var result = createjs.Sound.registerManifest(files, '/uploads/');
+                for (var j=0; j<result.length; j++) {
+                    if (result[i] == true) {
+                        numLoaded++;
+                    }
+                }
+                if (numLoaded == scope.song.recordings.length) {
+                    loaded = true;
+                    createjs.Sound.removeAllEventListeners(); // TODO: find better way of detaching sound load listener
+                    done();
+                }
+            };
 
-            }
+            scope.play = function() {
+                scope.stop();
+                load(function() {
+                    var recording;
+                    for (var i=0; i<scope.song.recordings.length; i++) {
+                        createjs.Sound.play(scope.song.recordings[i]._id);
+                    }
+                });
+                return false;
+            };
 
             scope.pause = function() {
-
-            }
+                return false;
+            };
 
             scope.stop = function() {
-
-            }
-
-            scope.record = function() {
-
-            }
+                createjs.Sound.stop();
+                return false;
+            };
         }
     }
 });

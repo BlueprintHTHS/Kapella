@@ -119,7 +119,7 @@ body {
   }
 }
 
-.notes-container {
+#notes-wrapper .notes-container {
   position: relative;
   #notes {
     position: absolute;
@@ -167,7 +167,7 @@ path.domain {
 }
 #notes-wrapper {
   width: 100%;
-  position: fixed;
+  position: absolute;
   left: 0px;
   background-color: #222222;
   padding-bottom: 5px;
@@ -176,7 +176,7 @@ path.domain {
 }
 #record-controls {
   position: relative;
-  top: 250px;
+  top: 220px;
 }
 
 /*-------------browse------------*/
@@ -243,7 +243,7 @@ kapella-recorder {
     stroke: #666666;
   }
   .rect {
-    fill: rgb(36, 221, 36);
+    fill: @main-color;
   }
   #notes, #chart {
     position: absolute;

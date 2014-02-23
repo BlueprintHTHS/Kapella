@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Song = mongoose.model('Song');
 var path = require('path');
 var appDir = path.dirname(require.main.filename);
-var uploadDir = path.join(appDir, 'uploads');
+var uploadDir = path.join(appDir, 'public/uploads');
 var uuid = require('node-uuid');
 var fs = require('fs');
 
