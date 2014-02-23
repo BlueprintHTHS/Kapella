@@ -155,21 +155,48 @@ kapellaDirectives.directive('kapellaPlayer', function() {
             song: '='
         },
         link: function(scope, element, attrs) {
-            scope.play = function() {
+            var loaded = false;
+            var load = function(done) {
+                if (loaded) {
+                    done();
+                    return;
+                }
+                var numLoaded = 0;
+                createjs.Sound.addEventListener("fileload", function() {
+                    numLoaded++;
+                    if (numLoaded == scope.song.recordings.length) {
+                        loaded = true;
+                        createjs.Sound.removeAllEventListeners(); // TODO: find better way of detaching sound load listener
+                        done();
+                    }
+                });
+                var files = [];
+                var recording;
+                for (var i=0; i<scope.song.recordings.length; i++) {
+                    files.push({id: scope.song.recordings[i]._id, src: scope.song.recordings[i].filename});
+                }
+                console.log(files);
+                createjs.Sound.registerManifest(files, '/uploads/');
+            };
 
-            }
+            scope.play = function() {
+                load(function() {
+                    var recording;
+                    for (var i=0; i<scope.song.recordings.length; i++) {
+                        createjs.Sound.play(scope.song.recordings[i]._id);
+                    }
+                });
+                return false;
+            };
 
             scope.pause = function() {
-
-            }
+                return false;
+            };
 
             scope.stop = function() {
-
-            }
-
-            scope.record = function() {
-
-            }
+                createjs.Sound.stop();
+                return false;
+            };
         }
     }
 });
