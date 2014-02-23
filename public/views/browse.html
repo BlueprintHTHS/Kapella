@@ -1,7 +1,7 @@
 <section>
     Filter: <input ng-model="query" type="text">
 </section>
-<section>
+<section id="browse-list">
     <div ng-repeat="song in songs | filter: query">
         <kapella-player song="song"></kapella-player>
     </div>
