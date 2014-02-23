@@ -81,9 +81,9 @@ module.exports = function(app) {
     /**
      * Submit a new recording
      */
-    app.post('/api/songs/:songId/recordings', function(req, res) {
-        var songId = req.params.songId;
-        var recordingData = req.body.data;
+    app.post('/api/songs/recordings', function(req, res) {
+        var songId = req.body.songId;
+        var recordingData = new Buffer(req.body.data);
         var filename = uuid.v1() + '.wav';
         fs.writeFile(path.join(uploadDir, filename), recordingData, function(err) {
             if (!err) {
