@@ -112,10 +112,12 @@ kapellaDirectives.directive('kapellaRecorder', function() {
                     .data(data)
                     .enter().append("rect")
                     .attr("class", "rect")
-                    .attr("height", 3.5)
+                    .attr("height", 5)
                     .attr("width", function(d) { return x(d.dur); })
                     .attr("x", function(d) { return x(d.t); })
-                    .attr("y", function(d) { return y(d.midi); });
+                    .attr("y", function(d) { return y(d.midi); })
+                    .attr('rx', '2.5')
+                    .attr('ry', '2.5');
 
                 notes.selectAll("text")
                     .data(data)
