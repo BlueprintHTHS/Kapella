@@ -374,3 +374,11 @@ kapella-recorder #chart .tick line {
 #facebook-login {
   right: 20px;
 }
+.modal-content {
+  background-color: #222222;
+  color: #cccccc;
+}
+.modal-content .btn-primary {
+  background-color: #2ecc71;
+  border-color: #28AA5F;
+}
