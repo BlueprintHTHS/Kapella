@@ -11,6 +11,36 @@ kapellaDirectives.directive('kapellaRecorder', function() {
             audioSrc: '@'
         },
         link: function(scope, element, attrs) {
+            scope.isPlaying = false;
+            createjs.Sound.addEventListener('fileload', function() {
+                scope.loaded();
+            });
+
+            scope.loaded = function() {
+                var instance = createjs.Sound.play(scope.audioSrc);
+                instance.addEventListener('complete', function() {
+                    scope.isPlaying = false;
+                });
+            };
+
+            scope.play = function() {
+                scope.isPlaying = true;
+                var result = createjs.Sound.registerSound(scope.audioSrc, scope.audioSrc);
+                if (result == true) {
+                    scope.loaded();
+                }
+            };
+
+            scope.stop = function() {
+                scope.isPlaying = false;
+                createjs.Sound.stop();
+            };
+
+            element.on('$destroy', function() {
+                scope.stop();
+                createjs.Sound.removeAllEventListeners();
+            });
+
             var maxtime = 3024;
             var measure = 192;
             var measures=[];
