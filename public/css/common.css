@@ -8,9 +8,9 @@
 }
 body {
   background: #3b3b3b;
+  overflow-x: hidden;
 }
 .content {
-  margin-top: 70px;
   width: 100%;
 }
 /*----------buttons---------*/
@@ -34,6 +34,29 @@ body {
   transition: all 0.15s ease-in-out;
 }
 #play:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+#stop {
+  padding: 20px;
+  background-color: #e74c3c;
+  color: #ffffff;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 20px;
+  line-height: 30px;
+  margin-bottom: 20px;
+  -webkit-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+}
+#stop:hover {
   opacity: 0.7;
   cursor: pointer;
 }
@@ -158,10 +181,11 @@ path.domain {
   padding-bottom: 5px;
   padding-top: 20px;
   box-shadow: 0px 0px 10px black inset;
+  top: 80px;
 }
 #record-controls {
   position: relative;
-  top: 220px;
+  top: 330px;
 }
 /*-------------browse------------*/
 .song {
@@ -207,9 +231,11 @@ kapella-recorder {
   /*.dot {
     stroke: #000;
   }*/
+
   /*#chart .tick:not(:first) line {
       stroke: transparent;
   }*/
+
 }
 kapella-recorder .axis path,
 kapella-recorder .axis line {
@@ -292,23 +318,34 @@ kapella-recorder #chart .tick line {
   top: -50px;
   height: 0px;
 }
-textarea:focus,
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="datetime"]:focus,
-input[type="datetime-local"]:focus,
-input[type="date"]:focus,
-input[type="month"]:focus,
-input[type="time"]:focus,
-input[type="week"]:focus,
-input[type="number"]:focus,
-input[type="email"]:focus,
-input[type="url"]:focus,
-input[type="search"]:focus,
-input[type="tel"]:focus,
-input[type="color"]:focus,
-.uneditable-input:focus {
-  border-color: rgba(126, 239, 104, 0.8);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
-  outline: 0 none;
+#header {
+  height: 450px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  background-color: #839B7E;
+  -moz-box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+#header-icon {
+  height: 250px;
+  width: 250px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+}
+#header-text {
+  margin-top: 10px;
+  line-height: 80px;
+  font-size: 65px;
+  color: #ffffff;
+  text-align: center;
+}
+#header-desc {
+  line-height: 50px;
+  font-size: 40px;
+  color: #ffffff;
+  text-align: center;
 }
