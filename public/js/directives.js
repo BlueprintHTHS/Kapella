@@ -25,7 +25,8 @@ kapellaDirectives.directive('kapellaRecorder', function() {
 
             scope.play = function() {
                 scope.isPlaying = true;
-                if (createjs.Sound.registerSound(scope.audioSrc, scope.audioSrc) == true) {
+                var result = createjs.Sound.registerSound(scope.audioSrc, scope.audioSrc);
+                if (result == true) {
                     scope.loaded();
                 }
             };
