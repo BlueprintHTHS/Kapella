@@ -6,12 +6,10 @@ var users = require('../controllers/users');
 module.exports = function(app, passport) {
 
     app.get('/signin', users.signin);
-    app.get('/signup', users.signup);
     app.get('/signout', users.signout);
     app.get('/users/me', users.me);
-
-    // Setting up the users api
-    app.post('/users', users.create);
+    app.get('/users/settings/get', users.getSettings);
+    app.post('/users/settings/set', users.setSettings);
 
     // Setting up the userId param
     app.param('userId', users.user);
