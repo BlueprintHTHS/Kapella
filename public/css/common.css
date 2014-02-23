@@ -358,3 +358,19 @@ kapella-recorder #chart .tick line {
   color: #ffffff;
   text-align: center;
 }
+.top-btn {
+  position: fixed;
+  top: 15px;
+  z-index: 100;
+  color: #cccccc;
+  font-size: 30px;
+}
+.top-btn:hover {
+  color: white;
+}
+#doge-settings {
+  left: 20px;
+}
+#facebook-login {
+  right: 20px;
+}
