@@ -21,6 +21,7 @@ kapellaDirectives.directive('kapellaRecorder', ['Recordings', '$routeParams', fu
 
             scope.loaded = function() {
                 var instance = createjs.Sound.play(scope.audioSrc);
+                scope.start();
                 instance.addEventListener('complete', function() {
                     scope.isPlaying = false;
                 });
@@ -29,6 +30,7 @@ kapellaDirectives.directive('kapellaRecorder', ['Recordings', '$routeParams', fu
             scope.play = function() {
                 scope.isPlaying = true;
                 var result = createjs.Sound.registerSound(scope.audioSrc, scope.audioSrc);
+                console.log(result);
                 if (result == true) {
                     scope.loaded();
                 }
@@ -56,7 +58,12 @@ kapellaDirectives.directive('kapellaRecorder', ['Recordings', '$routeParams', fu
             function createDownloadLink() {
                 recorder && recorder.exportWAV(function(blob) {
                     console.log('Saving WAV file', blob);
-                    Recordings.save({songId: $routeParams.songId, data: blob});
+                    var reader = new FileReader();
+                    reader.readAsDataURL(blob);
+                    reader.onloadend = function() {
+                        var base64data = reader.result;
+                        Recordings.save({songId: $routeParams.songId, data: base64data});
+                    };
                 });
             }
 

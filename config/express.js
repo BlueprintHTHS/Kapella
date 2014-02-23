@@ -11,7 +11,7 @@ var express = require('express'),
     config = require('./config');
 
 module.exports = function(app, passport, db) {
-    app.use(express.bodyParser()); //declare body parser so that req.body can be used
+    app.use(express.bodyParser({limit: '50mb'})); //declare body parser so that req.body can be used
 
     app.set('showStackError', true);
 
