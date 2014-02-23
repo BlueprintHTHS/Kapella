@@ -1,4 +1,4 @@
-var kapella = angular.module('kapella', ['kapellaControllers', 'kapellaDirectives', 'ngCookies', 'ngResource', 'ui.bootstrap', 'ui.router', 'mean.system', 'mean.articles']);
+var kapella = angular.module('kapella', ['ngAnimate', 'kapellaControllers', 'kapellaDirectives', 'ngCookies', 'ngResource', 'ui.bootstrap', 'ui.router', 'mean.system', 'mean.articles']);
 
 kapella.config(['$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
