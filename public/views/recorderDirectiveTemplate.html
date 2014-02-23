@@ -6,3 +6,17 @@
 <!--<audio controls ng-click="start()">
     <source ng-src="{{audioSrc}}" type="audio/wav">
 </audio>-->
+
+<div id="record-controls">
+    <div id="beats-wrapper">
+        <div class="beat"></div>
+        <div class="beat"></div>
+        <div class="beat"></div>
+        <div class="beat"></div>
+    </div>
+
+    <div id="play" ng-show="!isPlaying" ng-click="play()">Play</div>
+    <div id="stop" ng-show="isPlaying" ng-click="stop()">Stop</div>
+    <div id="record" ng-click="record()">Record</div>
+    <div id="cancel"><i class="fa fa-times"></i></div>
+</div>

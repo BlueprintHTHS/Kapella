@@ -11,6 +11,35 @@ kapellaDirectives.directive('kapellaRecorder', function() {
             audioSrc: '@'
         },
         link: function(scope, element, attrs) {
+            scope.isPlaying = false;
+            createjs.Sound.addEventListener('fileload', function() {
+                scope.loaded();
+            });
+
+            scope.loaded = function() {
+                var instance = createjs.Sound.play(scope.audioSrc);
+                instance.addEventListener('complete', function() {
+                    scope.isPlaying = false;
+                });
+            };
+
+            scope.play = function() {
+                scope.isPlaying = true;
+                if (createjs.Sound.registerSound(scope.audioSrc, scope.audioSrc) == true) {
+                    scope.loaded();
+                }
+            };
+
+            scope.stop = function() {
+                scope.isPlaying = false;
+                createjs.Sound.stop();
+            };
+
+            element.on('$destroy', function() {
+                scope.stop();
+                createjs.Sound.removeAllEventListeners();
+            });
+
             var maxtime = 3024;
             var measure = 192;
             var measures=[];
@@ -83,10 +112,12 @@ kapellaDirectives.directive('kapellaRecorder', function() {
                     .data(data)
                     .enter().append("rect")
                     .attr("class", "rect")
-                    .attr("height", 3.5)
+                    .attr("height", 5)
                     .attr("width", function(d) { return x(d.dur); })
                     .attr("x", function(d) { return x(d.t); })
-                    .attr("y", function(d) { return y(d.midi); });
+                    .attr("y", function(d) { return y(d.midi); })
+                    .attr('rx', '2.5')
+                    .attr('ry', '2.5');
 
                 notes.selectAll("text")
                     .data(data)
@@ -176,10 +207,21 @@ kapellaDirectives.directive('kapellaPlayer', function() {
                     files.push({id: scope.song.recordings[i]._id, src: scope.song.recordings[i].filename});
                 }
                 console.log(files);
-                createjs.Sound.registerManifest(files, '/uploads/');
+                var result = createjs.Sound.registerManifest(files, '/uploads/');
+                for (var j=0; j<result.length; j++) {
+                    if (result[i] == true) {
+                        numLoaded++;
+                    }
+                }
+                if (numLoaded == scope.song.recordings.length) {
+                    loaded = true;
+                    createjs.Sound.removeAllEventListeners(); // TODO: find better way of detaching sound load listener
+                    done();
+                }
             };
 
             scope.play = function() {
+                scope.stop();
                 load(function() {
                     var recording;
                     for (var i=0; i<scope.song.recordings.length; i++) {
