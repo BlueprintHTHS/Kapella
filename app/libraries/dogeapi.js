@@ -11,7 +11,8 @@
  *
  * @apiVersion 1.0.0
  */
-var APIKEY = 'APIKEY';
+config = require('../../config/config');
+var APIKEY = config.dogeapi.apikey;
 var request = require('request');
 var validator = require('validator');
 var ENDPOINT = 'https://dogeapi.com/';

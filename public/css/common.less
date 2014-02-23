@@ -213,13 +213,18 @@ path.domain {
     border: none;
     margin-left: 10px;
   }
+  input:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
 }
 .song {
   background-color: #222222;
   color: #bbbbbb;
   padding: 20px;
   font-size: 20px;
-  margin-bottom: 20px;
+  margin-top: 20px;
   .song-title {
     font-size: 30px;
     font-weight: bold;
@@ -385,4 +390,29 @@ kapella-recorder {
   font-size:40px;
   color:@main-text-color;
   text-align: center;
+}
+
+.top-btn {
+  position: fixed;
+  top: 15px;
+  z-index: 100;
+  color: #cccccc;
+  font-size: 30px;
+}
+.top-btn:hover {
+  color: white;
+}
+#doge-settings {
+  left: 20px;
+}
+#facebook-login {
+  right: 20px;
+}
+.modal-content {
+  background-color: #222222;
+  color: #cccccc;
+  .btn-primary {
+    background-color: @main-color;
+    border-color: #28AA5F;
+  }
 }
