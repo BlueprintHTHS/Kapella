@@ -79,10 +79,12 @@ kapellaDirectives.directive('kapellaRecorder', ['Recordings', function(Recording
 
             scope.startRecording = function() {
                 recorder && recorder.record();
+                scope.start();
             };
 
             scope.stopRecording = function() {
                 recorder && recorder.stop();
+                createDownloadLink();
             };
 
             element.on('$destroy', function() {
@@ -221,9 +223,11 @@ kapellaDirectives.directive('kapellaRecorder', ['Recordings', function(Recording
                 $(element).find('#notes').animate({
                     left: -1*widthceil
                 }, maxtimeceil*1000, 'linear', function() {
-                    scope.onComplete();
+                    scope.stopRecording();
                 });
-            }
+            };
+
+            var start = scope.start;
         }
     }
 }]);
