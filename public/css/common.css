@@ -101,51 +101,45 @@ body {
 .beat.on {
   background-color: #e74c3c;
 }
-/*---------------menu------------*/
-.top-btn {
-  font-size: 30px;
-  color: #cccccc;
-}
-.top-btn:hover {
-  color: #ffffff;
-}
-#doge-settings {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-}
-#facebook-login {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-}
-#settingsModal .modal-content {
+/*-------------browse------------*/
+.song {
   background-color: #222222;
-  color: #cccccc;
+  color: #bbbbbb;
+  padding: 20px;
+  font-size: 20px;
+  margin-bottom: 20px;
 }
-#settingsModal .modal-content .btn-primary {
-  background-color: #2ecc71;
-  border-color: #28ae61;
+.song .song-title {
+  font-size: 30px;
+  font-weight: bold;
 }
-textarea:focus,
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="datetime"]:focus,
-input[type="datetime-local"]:focus,
-input[type="date"]:focus,
-input[type="month"]:focus,
-input[type="time"]:focus,
-input[type="week"]:focus,
-input[type="number"]:focus,
-input[type="email"]:focus,
-input[type="url"]:focus,
-input[type="search"]:focus,
-input[type="tel"]:focus,
-input[type="color"]:focus,
-.uneditable-input:focus {
-  border-color: rgba(126, 239, 104, 0.8);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
-  outline: 0 none;
+.song .song-length {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 20px;
+  display: inline-block;
+}
+.song .song-length:before {
+  content: " — ";
+  top: -2px;
+  position: relative;
+}
+.song .button {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  margin: 5px;
+  text-align: center;
+}
+.song .contributors {
+  display: inline-block;
+  height: 30px;
+  margin: 5px;
+}
+.song .doge-amount {
+  display: inline-block;
+  height: 30px;
+  margin: 5px;
 }
 kapella-recorder {
   /*.dot {
@@ -199,4 +193,24 @@ kapella-recorder .notes-container {
 kapella-recorder #chart .tick line {
   fill: white;
   stroke: white;
+}
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  border-color: rgba(126, 239, 104, 0.8);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
+  outline: 0 none;
 }
