@@ -157,10 +157,11 @@ path.domain {
   padding-bottom: 5px;
   padding-top: 20px;
   box-shadow: 0px 0px 10px black inset;
+  top: 80px;
 }
 #record-controls {
   position: relative;
-  top: 220px;
+  top: 330px;
 }
 /*-------------browse------------*/
 .song {
@@ -206,11 +207,9 @@ kapella-recorder {
   /*.dot {
     stroke: #000;
   }*/
-
   /*#chart .tick:not(:first) line {
       stroke: transparent;
   }*/
-
 }
 kapella-recorder .axis path,
 kapella-recorder .axis line {
