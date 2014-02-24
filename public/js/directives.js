@@ -67,7 +67,7 @@ kapellaDirectives.directive('kapellaRecorder', ['Recordings', '$routeParams', fu
                 });
             }
 
-            window.onload = function init() {
+            function init() {
                 try {
                     // webkit shim
                     window.AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -86,6 +86,8 @@ kapellaDirectives.directive('kapellaRecorder', ['Recordings', '$routeParams', fu
                 });
             };
 
+            init();
+
             scope.startRecording = function() {
                 recorder && recorder.record();
                 scope.start();
@@ -98,6 +100,7 @@ kapellaDirectives.directive('kapellaRecorder', ['Recordings', '$routeParams', fu
 
             element.on('$destroy', function() {
                 scope.stop();
+                scope.stopRecording();
                 createjs.Sound.removeAllEventListeners();
             });
 
