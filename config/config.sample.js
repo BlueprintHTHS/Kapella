@@ -21,8 +21,8 @@ module.exports = {
         name: 'Kapella'
     },
     facebook: {
-        clientID: '721489677887318',
-        clientSecret: 'e8c729a8bc04c560b06369e1104047dc',
+        clientID: 'APP_ID',
+        clientSecret: 'APP_SECRET',
         callbackURL: 'http://localhost:3000/auth/facebook/callback'
     },
     dogeapi: {
