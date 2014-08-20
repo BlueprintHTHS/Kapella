@@ -12,7 +12,11 @@
     "node": "0.10.x",
     "npm": "1.3.x"
   },
+  "scripts": {
+    "postinstall": "./node_modules/bower/bin/bower install"
+  },
   "dependencies": {
+    "bower": "^1.3.9",
     "express": "~3.4.7",
     "jade": "~1.0.2",
     "consolidate": "~0.10.0",
