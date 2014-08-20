@@ -11,7 +11,7 @@
  *
  * @apiVersion 1.0.0
  */
-config = require('../../config/config');
+config = require('../../config');
 var APIKEY = config.dogeapi.apikey;
 var request = require('request');
 var validator = require('validator');
